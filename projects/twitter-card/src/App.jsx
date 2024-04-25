@@ -1,24 +1,18 @@
 
 import './App.css'
+import { TwitterFollowCard } from './TwitterFollowCard'
 
-function App() {
+export function App() {
+  const format = (userName) => `@${userName}`
   return (
-    <article className='tw-followCard'>
-      <header className='tw-followCard-header'>
-        <img className='tw-followCard-avatar' alt="El avatar de Casey Neistat" src="https://unavatar.io/youtube/casey" />
-        <div>
-        <strong className='tw-followCard-info'>Casey Neistat</strong>
-        <span className='tw-followCard-infoUserName'>@casey</span>
-        </div>
-      </header>
-
-      <aside>
-        <button className='tw-followCard-button'>
-          Seguir
-        </button>
-      </aside>
-    </article>
+    // <React.Fragment> para envolver dos elementos o mas, sin React.Fragment daria error
+    // React.Fragment es lo mismo que <></>
+    <section className='App'> 
+    <TwitterFollowCard formatUserName={format} isFollowing={true} userName="Casey" name="Casey Neistat" />
+    <TwitterFollowCard formatUserName={format} isFollowing={false} userName="ElonMusk" name="Elon Musk" />
+    <TwitterFollowCard formatUserName={format} isFollowing userName="BarackObama" name="Barack Obama" />
+    </ section>
   )
 }
-
 export default App
+
