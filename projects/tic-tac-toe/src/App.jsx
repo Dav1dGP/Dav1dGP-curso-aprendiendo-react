@@ -69,22 +69,31 @@ function App() {
     setWinner(null)
   }
 
+const checkEndGame = (newBoard) => {
+  // revisamos si hay un empate
+  // si no hay mas espacios vacíos
+  // en el tablero
+  return newBoard.every((square) => square !== null)
+}
+
   const updateBoard = (index) => {
     // no actualizar esta posición si ya tiene algo
     if (board[index] || winner) return
-    //newBoard igual a board, se hace un Spread Operator
+    // newBoard igual a board, se hace un Spread Operator
     const newBoard = [... board]
     newBoard[index] = turn
     setBoard(newBoard)
-    //cambiar e turno
+    // cambiar e turno
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
     // revisar si hay un ganador
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       setWinner(newWinner)
-    } // TODO: check if game is over
+    } else if (checkEndGame(newBoard)){//  check if game is over
+      setWinner(false) //empate
   }
+}
 
   return (
     <main className='board'>
