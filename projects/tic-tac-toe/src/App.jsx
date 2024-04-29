@@ -110,7 +110,7 @@ const checkEndGame = (newBoard) => {
               index={index}
               updateBoard={updateBoard}
             >
-              {board[index]}
+              {square}
               </Square>
 
           )
